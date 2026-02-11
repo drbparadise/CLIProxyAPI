@@ -203,6 +203,36 @@ func GetGeminiModels() []*ModelInfo {
 			SupportedGenerationMethods: []string{"generateContent", "countTokens", "createCachedContent", "batchGenerateContent"},
 			Thinking:                   &ThinkingSupport{Min: 128, Max: 32768, ZeroAllowed: false, DynamicAllowed: true, Levels: []string{"low", "high"}},
 		},
+		{
+			ID:                         "gemini-2.5-flash-preview-tts",
+			Object:                     "model",
+			Created:                    1756166400, // 2025-08-26
+			OwnedBy:                    "google",
+			Type:                       "gemini",
+			Name:                       "models/gemini-2.5-flash-preview-tts",
+			Version:                    "2.5",
+			DisplayName:                "Gemini 2.5 Flash Preview TTS",
+			Description:                "Preview text-to-speech (TTS) model for generating audio responses.",
+			InputTokenLimit:            1048576,
+			OutputTokenLimit:           8192,
+			SupportedGenerationMethods: []string{"generateContent", "countTokens"},
+			// TTS models don't support thinkingConfig; leave Thinking nil
+		},
+		{
+			ID:                         "gemini-2.5-pro-preview-tts",
+			Object:                     "model",
+			Created:                    1756166400, // 2025-08-26
+			OwnedBy:                    "google",
+			Type:                       "gemini",
+			Name:                       "models/gemini-2.5-pro-preview-tts",
+			Version:                    "2.5",
+			DisplayName:                "Gemini 2.5 Pro Preview TTS",
+			Description:                "Preview text-to-speech (TTS) model for generating higher-quality audio responses.",
+			InputTokenLimit:            1048576,
+			OutputTokenLimit:           8192,
+			SupportedGenerationMethods: []string{"generateContent", "countTokens"},
+			// TTS models don't support thinkingConfig; leave Thinking nil
+		},
 	}
 }
 
