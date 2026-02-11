@@ -147,3 +147,26 @@ func TestLookupModelInfoReturnsCloneForStaticDefinitions(t *testing.T) {
 		t.Fatalf("expected static lookup clone, got %+v", second)
 	}
 }
+
+func TestGeminiTTSPreviewModelsAreRegisteredInStaticCatalog(t *testing.T) {
+	for _, modelID := range []string{
+		"gemini-2.5-flash-preview-tts",
+		"gemini-2.5-pro-preview-tts",
+	} {
+		t.Run(modelID, func(t *testing.T) {
+			model := LookupStaticModelInfo(modelID)
+			if model == nil {
+				t.Fatalf("expected static model %q", modelID)
+			}
+			if model.Type != "gemini" {
+				t.Fatalf("expected gemini model type, got %q", model.Type)
+			}
+			if model.Name != "models/"+modelID {
+				t.Fatalf("expected Gemini model name, got %q", model.Name)
+			}
+			if model.Thinking != nil {
+				t.Fatalf("expected TTS model to omit thinking support, got %+v", model.Thinking)
+			}
+		})
+	}
+}
